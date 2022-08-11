@@ -1,3 +1,4 @@
+# Warning : the whole project is still developing please don't use it for working.
 from __future__ import annotations
 
 import itertools
@@ -13,7 +14,6 @@ from retry import retry
 from tqdm import tqdm
 
 signal.signal(signal.SIGINT, multitasking.killall)
-# cython: language_level=3
 
 
 def split(start: int, end: int, step: int) -> list[tuple[int, int]]:
