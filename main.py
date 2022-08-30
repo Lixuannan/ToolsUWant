@@ -117,6 +117,3 @@ class MultiThreadDownload:
         f.close()
         bar.close()
 
-
-
-
