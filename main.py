@@ -46,7 +46,7 @@ class ZipCracker:
         sys.exit(0)
 
     def pre_guess_pwd(self, guess_num: int):
-        tmp = itertools.combinations("1234567890!@#$%^&*()-=_+~`qwertyuiop\\|asdfghjkl;zxcvbnm,./:<>?", guess_num)
+        tmp = itertools.combinations(r'1234567890!@#$%^&*()-=_+~`qwertyuiop\|asdfghjkl;zxcvbnm,./:<>?', guess_num)
         tmp_pwd = []
         for i in tmp:
             tmp_pwd.append("".join(i))
@@ -77,7 +77,7 @@ class MultiThreadDownload:
     def get_file_size(self, url: str, raise_error: bool = False) -> int:
         response = requests.head(url)
         file_size = response.headers.get('Content-Length')
-        if file_size is None:
+        if not file_size:
             if raise_error is True:
                 raise ValueError('该文件不支持多线程分段下载！')
             return int(file_size)
@@ -116,4 +116,3 @@ class MultiThreadDownload:
         multitasking.wait_for_tasks()
         f.close()
         bar.close()
-
