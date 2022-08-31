@@ -4,6 +4,7 @@ decorator==5.1.1
 idna==3.3
 multitasking==0.0.11
 py==1.11.0
+PyPDF4==1.27.0
 PySide6==6.3.1
 PySide6-Addons==6.3.1
 PySide6-Essentials==6.3.1
