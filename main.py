@@ -145,3 +145,32 @@ class MultiThreadDownload:
         multitasking.wait_for_tasks()
         f.close()
         bar.close()
+
+
+class JetbrainsActiveServer:
+    def __init__(self):
+        self.servers = []
+        self.headers = {
+            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHT'
+                          'ML, like Gecko) Chrome/104.0.0.0 Safari/537.36',
+            'Referer': 'https://finance.sina.com.c'}
+        self.get_page()
+        os.popen("open webpage.html")
+
+    def get_page(self):
+        # Bug: Can't get html souse code
+        # 漏洞： 无法获得完整html源码，被反爬
+        req = requests.get(url="https://search.censys.io/search?"
+                               "resource=hosts&sort=RELEVANCE&per_"
+                               "page=25&virtual_hosts=EXCLUDE&q=serv"
+                               "ices.http.response.headers.location%"
+                               "3A+account.jetbrains.com%2Ffls-auth",
+                           headers=self.headers)
+        content = req.text
+        with open("webpage.html", "wt") as f:
+            f.write(content)
+            f.close()
+
+
+if __name__ == '__main__':
+    JetbrainsActiveServer()
